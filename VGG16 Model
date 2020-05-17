@@ -1,0 +1,55 @@
+from keras.layers import Input, Lambda, Dense, Flatten
+from keras.models import Model
+from keras.applications.vgg16 import VGG16
+from keras.applications.vgg16 import preprocess_input
+from keras.preprocessing import image
+from keras.preprocessing.image import ImageDataGenerator
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import plot_confusion_matrix
+
+from sklearn.metrics import confusion_matrix
+from sklearn import datasets, svm, metrics
+from sklearn.model_selection import train_test_split
+import numpy as np
+import matplotlib.pyplot as plt
+
+from glob import glob
+
+num_of_test_samples = 450
+# re-size all the images to this
+IMAGE_SIZE = [100, 100] 
+
+# training config:
+epochs = 20
+batch_size = 32
+
+''''''''
+'''''''
+'''''''
+plt.imshow(image.load_img(np.random.choice(image_files)))
+plt.show()
+
+vgg = VGG16(input_shape=IMAGE_SIZE + [3], weights='imagenet', include_top=False)
+for layer in vgg.layers:
+  layer.trainable = False
+  ''''''''
+  ''''''
+  '''''''
+  
+  '''''''
+  # create generators
+train_generator = gen.flow_from_directory(
+  train_path,
+  target_size=IMAGE_SIZE,
+  shuffle=True,
+  batch_size=batch_size,
+)
+valid_generator = gen.flow_from_directory(
+  valid_path,
+  target_size=IMAGE_SIZE,
+  shuffle=False,
+  batch_size=batch_size,
+)
+''''''''''''
+'''''''''''
+''''
