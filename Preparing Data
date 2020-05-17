@@ -1,0 +1,41 @@
+from keras.layers import Input, Lambda, Dense, Flatten
+from keras.models import Model
+from keras.applications.vgg16 import VGG16
+from keras.applications.vgg16 import preprocess_input
+from keras.preprocessing import image
+from keras.preprocessing.image import ImageDataGenerator
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import plot_confusion_matrix
+
+from sklearn.metrics import confusion_matrix
+from sklearn import datasets, svm, metrics
+from sklearn.model_selection import train_test_split
+import numpy as np
+import matplotlib.pyplot as plt
+
+from glob import glob
+
+num_of_test_samples = 450
+# re-size all the images to this
+IMAGE_SIZE = [100, 100] 
+
+image_files = glob(train_path + '/*/*.jpe*g')
+valid_image_files = glob(valid_path + '/*/*.jpe*g')
+folders = glob(train_path + '/*')
+
+
+plt.imshow(image.load_img(np.random.choice(image_files)))
+plt.show()
+
+test_gen = gen.flow_from_directory(valid_path, target_size=IMAGE_SIZE)
+print(test_gen.class_indices)
+labels = [None] * len(test_gen.class_indices)
+for k, v in test_gen.class_indices.items():
+  labels[v] = k
+# testing
+for x, y in test_gen:
+  print("min:", x[0].min(), "max:", x[0].max())
+  plt.title(labels[np.argmax(y[0])])
+  plt.imshow(x[0])
+  plt.show()
+  break
